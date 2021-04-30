@@ -20,6 +20,7 @@ import com.example.testbf.viewmodel.ViewModelMain
 import com.example.testbf.viewmodel.ViewModelMainFactory
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.item_character.*
+import org.json.JSONArray
 import org.json.JSONObject
 
 class DetailFragment : Fragment(R.layout.detail_blank2) {
@@ -50,9 +51,9 @@ class DetailFragment : Fragment(R.layout.detail_blank2) {
                     .into(photo)
             }
             name.text = data.name
-            status.text = data.name
-            species.text = data.name
-            gender.text = data.name
+            status.text = data.status
+            species.text = data.species
+            gender.text = data.gender
         }
 
 

@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.testbf.R
 import com.example.testbf.data.model.Result
 import com.example.testbf.databinding.ItemCharacterBinding
+import com.google.gson.Gson
 
 class MainAdapter(private val data: List<Result>): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     lateinit var context: Context
@@ -39,7 +40,8 @@ class MainAdapter(private val data: List<Result>): RecyclerView.Adapter<MainAdap
                 .load(item.image)
                 .into(binding.image)
             mView.setOnClickListener {
-                mView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundleOf("data" to item.toString()))
+                val gson: Gson
+                mView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundleOf("data" to Gson().toJson(item)))
             }
 
         }
