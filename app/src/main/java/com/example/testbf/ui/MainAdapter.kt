@@ -34,11 +34,12 @@ class MainAdapter(private val data: List<Result>): RecyclerView.Adapter<MainAdap
         //val ivDog:ImageView = mView.ivDog
 
         fun bind(item: Result){
+            binding.values.text = item.name
             Glide.with(context)
                 .load(item.image)
                 .into(binding.image)
             mView.setOnClickListener {
-                mView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundleOf("data" to item))
+                mView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundleOf("data" to item.toString()))
             }
 
         }

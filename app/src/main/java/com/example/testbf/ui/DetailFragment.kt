@@ -18,18 +18,20 @@ import com.example.testbf.repository.RepositoryImpl
 import com.example.testbf.util.Resource
 import com.example.testbf.viewmodel.ViewModelMain
 import com.example.testbf.viewmodel.ViewModelMainFactory
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.item_character.*
+import org.json.JSONObject
 
 class DetailFragment : Fragment(R.layout.detail_blank2) {
 
     private lateinit var binding: DetailBlank2Binding
 
-    private lateinit var data: Result
+    private lateinit var dataB: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            data = it.get("data") as Result
+            dataB = it.getString("data").toString()
         }
     }
 
@@ -38,6 +40,8 @@ class DetailFragment : Fragment(R.layout.detail_blank2) {
         /*binding.button1.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
         }*/
+        val gson = Gson()
+        val data: Result = gson.fromJson(dataB,Result::class.java)
         binding = DetailBlank2Binding.bind(view)
         with(binding){
             context?.let {
