@@ -24,9 +24,6 @@ class MainFragment : Fragment(R.layout.main_blank) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*binding.button1.setOnClickListener{
-            findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
-        }*/
         binding = MainBlankBinding.bind(view)
         with(binding){
             viewModel.fetchServiceTramo().observe(viewLifecycleOwner, androidx.lifecycle.Observer {

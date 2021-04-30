@@ -4,6 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.testbf.R
@@ -26,7 +29,7 @@ class MainAdapter(private val data: List<Result>): RecyclerView.Adapter<MainAdap
 
     override fun getItemCount(): Int = data.size
 
-    inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         private val binding = ItemCharacterBinding.bind(mView)
         //val ivDog:ImageView = mView.ivDog
 
@@ -34,6 +37,9 @@ class MainAdapter(private val data: List<Result>): RecyclerView.Adapter<MainAdap
             Glide.with(context)
                 .load(item.image)
                 .into(binding.image)
+            mView.setOnClickListener {
+                mView.findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundleOf("data" to item))
+            }
 
         }
     }
